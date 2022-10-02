@@ -1,0 +1,259 @@
+html, body {
+    height: 100%;
+}
+
+  body {
+    /*Dette er bakgrunnen til startsiden, og funnet på nettet*/
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='hexagons' fill='%239C92AC' fill-opacity='0.25' fill-rule='nonzero'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"), linear-gradient(to right top, #343a40, #2b2c31, #211f22, #151314, #000000);
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+}
+ 
+/*er for å hjelpe bakgrunnen på startsiden*/
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+ /*designer overskrifter, og sier at teksten skal være sentrert*/
+h1, h2, h3 {
+    text-align: center;
+}
+
+ /*designer tabeller generelt, untatt de som har en egen classe eller id*/
+table {
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: normal;
+    border: none;
+    border-collapse: collapse;  /*sier at det ikke skal være en border rundt tabellen*/
+    width: 100%; 
+    max-width: 100%;
+    white-space: nowrap;  /*sier at texten ikke skal overpasere hverandre*/
+    background-color: white;
+    font-weight: bold;
+    table-layout: auto; /*tabellen skal automatisk organisere elementene inni*/
+} 
+   /*både td ig th skal ha dette designet*/
+ td, th {
+    text-align: center;
+    padding: 8px; /*sier hvor mye plass det skal være mellom elementer*/
+    font-size: medium; /*sier hvor stor teksten skal være*/
+}
+    /*bare td skal ha dette designet*/
+ td {
+    border-right: 1px solid #f8f8f8;  
+    table-layout: auto;
+    
+}
+  /*th under thead skal ha dette designet*/
+ thead th {
+    color: #ffffff;
+    background: #c34f4f;
+}
+  /*annen hver (oddetallene) skal ha dette designet, og bare th i thead*/
+ thead th:nth-child(odd) {
+    color: #ffffff;
+    background: #324960;
+}
+  /*partallene i tr skal ha dette designet*/
+ tr:nth-child(even) {
+    background: #F8F8F8;
+}
+
+
+  /*designet for innholdsfortegnelsen du ser på siden av*/
+.innholdsfortegnelse {
+    padding: 10px;
+    border: 5px solid #000000;
+    background-color: #ffffff;
+    width: fit-content;
+    display: list-item;
+    position: fixed;
+}
+ /*Når man putter en classe før en komando, vil bare den komandoen inni classen bli redigert, her har et anchor blit redigert*/
+.innholdsfortegnelse a {
+    text-decoration: none;
+    color: #000000;
+}
+/*når man hovrer over ankeret vil teksten utvide seg med 4 piksler, og teksten skal bli blå*/
+.innholdsfortegnelse a:hover {
+    transition: all 500ms;
+    font-size-adjust: 4px;
+    font-size: 30px;
+    color: blue;
+}
+
+/*Når man skriver margin-left auto og Margin-right auto, vil elementet bli sentrert*/
+
+.overskrift {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 60px;
+    padding: 10px;
+    border: 5px solid #000000;
+    background-color: #ffffff;
+}
+
+.avsnitt {
+    width: 50%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 5px solid #000000;
+    background-color: #ffffff;
+}
+/*en dashed border er strekede istedenfor solid*/
+.oppsumering {
+    padding: 15px ;
+    border: 5px dashed #000000;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+
+
+.avsnitt p {
+    text-align: center;
+}
+
+.avsnitt h2 {
+    padding: 5px;
+    border: 1px;
+}
+ /*innholdsfortegnelsen brukt på startsiden*/
+#innholdsfortegnelse {
+    margin-right: auto;
+    margin-left: auto;
+    padding: 10px;
+    border: 5px solid #000000;
+    background-color: #ffffff;
+    width: fit-content;
+}
+ /*denne classen ble ikke brukt veldig mye, basert på hvor variert bildene mine skulle se ut, men det var fortsatt fint å ha i tilfelle*/
+.bilde {
+    padding:10px;
+    border: 5px solid #000000;
+    background-color: #ffffff;
+}
+ /*denne ble brukt med en span komando for å gjøre spesifikke tekst elementer mer markert*/
+.bold {
+    font-weight: bold;
+}
+ /*dette var noe jeg eksperimenterte med, men desverre funket det ikke så bra*/
+#Btn {
+    display: none; /* gjemt */
+    position: fixed; /* fiksert posisjon */
+    bottom: 20px; /* knappen er plsert på bunnen av siden */
+    right: 30px; /* plaser kanppen fra høyre siden */
+    z-index: 99; /* vhver sikker på at den ikke overlapper med andre elementer */
+    border: none; /* ingen border */
+    outline: none; /* ingen outline */
+    background-color: red; /* bakgrunnsfarge rød*/
+    color: white; /* Tekst farge hvit */
+    cursor: pointer; /*plaser en muse peker når den hovrer over */
+    padding: 15px; /* noe padding */
+    border-radius: 10px; /* rundete hjørner */
+    font-size: 18px; /* forstørret tekst */
+  }
+  
+  #Btn:hover {
+    background-color: #555; /* Bakgrunnen blir mørke grå når man hovrer over */
+  }
+    /*ble brukt for å ekperimenter med en fiksert innholdsfortegnelse, ble ikke vist i oppgaven*/
+  .skroll {
+    margin:4px 4px;
+    padding:4px;
+    position:static;
+  
+  }
+ /*designet til navigasjonsbaren*/
+.navigasjon {
+    background: #000000;
+    overflow: hidden;
+    top: 0;
+    width: 100%;
+    position:fixed;
+    display: block;
+    transition-duration: 0.3s; /*noe jeg eksperimenterte med, men fant ut at jeg trengte javascript, så ga opp på ideen. Navigasjonsbaren skulle forsvinne når man blar nedover*/
+}
+ /*designet til ankerne i navigasjonsbaren*/
+.navigasjon a {
+    color: #fff5f5;
+    font-family: 'Times New Roman', Times, serif;
+    outline-offset: 5px;
+    outline-color: #eb5940;
+    float: left;
+    display: block;
+    text-align: center;
+    font-size: x-large;
+    text-decoration: none;
+    padding: 14px 16px;
+}
+ /*Hva som skjer etter man har besøkt et anker i navigasjonsbaren*/
+.navigasjon a:visited {
+    color: #eb5940;
+}
+
+
+ /*hva som skje rnår man hovrer over et anker i navigasjonsbaren*/
+.navigasjon a:hover {
+    color: #eb5940;
+    text-decoration-color: #cccccc;
+    background-color: #cccccc;
+}
+ /*hva som skjer etter et anker i navigasjonsbaren har blitt aktivert*/
+.navigasjon a:active {
+    text-decoration: none;
+}
+ /*hva som skjer når man fokuserer på et anker i navigasjonsbarem (funker likt som hover)*/
+.navigasjon a:focus {
+    color: #eb5940;
+    text-decoration-color: #cccccc;
+}
+
+
+ /*designet til ankerene brukt på startsiden*/
+.start a {
+    color:black;
+
+}
+
+.start a:visited {
+    color: #eb5940;
+
+}
+
+
+
+.start a:hover {
+    color: #eb5940;
+    text-decoration-color: #cccccc;
+    font-size: 30px;
+    transition: all 500ms;
+    font-size-adjust: 10px;
+}
+
+.start a:active {
+    text-decoration:none;
+    font-size: 30px;
+    transition: all 1000ms;
+    font-size-adjust: 10px;
+    color: #000000;
+    text-shadow: 3px 3px 5px #000000;
+
+}
+
+.start a:focus {
+    color: #eb5940;
+    text-decoration-color: #cccccc;
+}
