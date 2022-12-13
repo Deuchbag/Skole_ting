@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>En tilfeldig alder</title>
+</head>
+<body>
+    <script>
+        var tilfeldigTall;
+        tilfeldigTall = (Math.random() * 100) + 1;
+        var tilfeldigTallHelt = parseInt(tilfeldigTall);
+        var tidIgjen = 100 - tilfeldigTallHelt
+
+        
+        if(tilfeldigTallHelt<=10) {
+            document.write ("Du er ung " + tilfeldigTallHelt + "år, "  + "du har kun " + tidIgjen + "år igjen" );
+        }
+
+        else if(tilfeldigTallHelt<=20) {
+            document.write("Du er ungdom " + tilfeldigTallHelt + "år, " + "du har kun " + tidIgjen + "år igjen");
+        }
+
+        else if(tilfeldigTallHelt<67) {
+            document.write("Du er voksen " + tilfeldigTallHelt + "år, " + "du har kun " + tidIgjen + "år igjen");
+        }
+
+        else if(tilfeldigTallHelt = 67) {
+            document.write("Du har blitt pensjonist, døden nærmer seg, og det er på tide å akseptere helvete som kommer videre. Heldigvis har du kun, " + tidIgjen + "år igjen å leve")
+        }
+
+        else if(tilfeldigTallHelt<=75) {
+            document.write("Du er eldre " + tilfeldigTallHelt + "år, " + "du har kun " + tidIgjen + "år igjen");
+        }
+
+        else if(tilfeldigTall < 100) {
+            document.write("Du er gammel " + tilfeldigTallHelt + "år, " + "du har kun " + tidIgjen + "år igjen")
+        }
+
+        else{
+            document.write("Du er mest sannsynlig død")
+        }
+
+        
+    </script>
+</body>
+</html>

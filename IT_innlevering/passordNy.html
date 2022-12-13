@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css_til_passord.css">
+</head>
+
+<body>
+    <div class="main">
+        <h1>Passord</h1>
+        <p>Her vil du ha tre sjanser på å få passordet riktig, du kan bruke ?1, ?2, ?lengde, ?små og ?store for hint,
+            men hver gang du tar feil, vil en tilfeldig bokstav bli lagt til ordet.</p>
+
+        <input id="passord" placeholder="passord" type="password">
+        <input id="btn" type="button" value="Gå">
+
+
+        <p id="svar"></p>
+
+        <p id="sjanserIgjen"></p>
+    </div>
+    <script>
+
+        var sjanse = 3;
+
+        let abc = "abcdefghijklmnopqrstuvwxyzæøå"
+
+
+
+
+
+        let plan = "Depression"
+
+        var a = document.createElement('a');
+
+        var link = document.createTextNode("Arrogance gets you nowhere")
+
+        var btn = document.getElementById("btn")
+
+        a.appendChild(link)
+
+        a.title = "Arrogance gets you nowhere"
+
+        a.href = "https://snl.no/arroganse"
+
+        btn.onclick = function () {
+            let passord;
+            passord = document.getElementById("passord").value;
+
+            if (passord == "Depression") {
+                svar.innerHTML = "Du valgte riktig passord" + document.body.appendChild(a);
+            }
+            else if (passord == "?lengde") {
+                svar.innerHTML = "Lengden til ordet er " + plan.length;
+            }
+
+            else if (passord == "?1") {
+                svar.innerHTML = "Den første bokstaven er " + plan[0];
+            }
+
+            else if (passord == "?2") {
+                svar.innerHTML = "Den andre bokstaven er " + plan[1];
+            }
+
+            else if (passord == "?siste") {
+                svar.innerHTML = "Den siste bokstaven er " + plan[2];
+            }
+
+            else if (passord == "?store") {
+                svar.innerHTML = plan.toUpperCase()
+            }
+
+            else if (passord == "?små") {
+                svar.innerHTML = plan.toLowerCase()
+            }
+
+            else {
+                svar.innerHTML = "Du valgte feil passord, du blir nå straffet med en ekstra tilfeldig bokstav"
+                let abcd = abc[Math.floor(Math.random() * abc.length)];
+                plan += abcd
+                sjanse = sjanse - 1
+                sjanserIgjen.innerHTML = sjanse
+            }
+
+
+
+            if (sjanse == 0) {
+                window.location.replace("https://theuselessweb.com/")
+            }
+
+        }
+    </script>
+</body>
+
+</html>

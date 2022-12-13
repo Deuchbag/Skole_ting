@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css_while.css">
+</head>
+
+<body>
+
+    <div class="main">
+        <h1>While løkker</h1>
+        <input id="btn2" type="button" value="Gangetabell">
+        <input type="button" id="btn1" onclick="gangetabell" value="Tall en til hundre">
+        <input type="text" id="gangetabell" placeholder="gangetabell">
+    </div>
+
+    <p id="svar1"></p>
+    <p id="svar2"></p>
+
+    <script>
+        var tall1 = 0;
+
+
+        btn1.onclick = function enTilHundre() {
+
+            let text = "";
+            let i = 0;
+            while (i <= 100) {
+                text += i + " , ";
+                i++;
+                svar1.innerHTML = text;
+            }
+        }
+
+        btn2.onclick = function gangetabell() {
+            let tekst = "";
+            let k = 0;
+            var a = document.getElementById("gangetabell").value
+            while (k <= 100) {
+                k++
+                if (k % a != 0) { continue; }
+                tekst += " , " + k;
+                svar2.innerHTML = tekst
+            }
+        }
+    </script>
+</body>
+
+</html>

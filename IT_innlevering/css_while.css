@@ -1,0 +1,8 @@
+.main {
+    display: grid;
+    grid-template-columns: auto;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto ;
+}
+

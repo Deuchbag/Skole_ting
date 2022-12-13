@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var antallTimer = Number(prompt("Hvor mange timer"));
+        var antallMinutter = Number(prompt("Hvor mange minutter"));
+        var antallSekunder = Number(prompt("hvor mange sekunder"))
+
+        let sitat = antallTimer + "* 3600 " + " + " + antallMinutter + " * 60 " + " + " + antallSekunder;
+
+       let antallTimer1 = antallTimer
+       let antallMinutter1 = antallMinutter
+       let antallSekunder1 = antallSekunder
+
+        antallTimer *= 3600;
+        antallMinutter *= 60;
+        antallSekunder = antallSekunder;
+        let resultat = antallTimer1 + antallMinutter1 + antallSekunder1;
+
+        var totalSekunder = antallTimer + antallMinutter + antallSekunder;
+
+        document.write("Total mengde sekunder av " + sitat + " er " + totalSekunder + "s");
+       
+
+        while(antallSekunder1 >= 60) {
+             antallSekunder1 -= 60;
+             antallMinutter1 += 1;
+        }
+
+        while(antallMinutter1 >= 60) {
+             antallMinutter1 -= 60;
+             antallTimer1 += 1;
+        }
+
+        document.write("<h1>oppgave 3</h1>" + "totalt anntall timer = " + antallTimer1 + " t " + + "  " + antallMinutter1 + " m " + "  " + antallSekunder1 + " s " )
+
+    </script>
+</body>
+</html>
