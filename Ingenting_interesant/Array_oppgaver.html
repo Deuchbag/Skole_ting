@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="arrayTing(mangeTall)">click me :)</button>
+    <p id="størsteTall"> Her får du største tall</p>
+    <p id="minsteTall"> Her får du minste tall</p>
+    <p id="variasjonsbredde"> Her får du variasjonsbredden til arrayen din</p>
+    <p id="gjennomsnittP"> Her får du gjennomsnittet til arrayen din</p>
+    <script>
+        let mangeTall = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ,15 ,16 ,17 ,18, 19, 20]
+        let storst = mangeTall[0];
+        let minst =mangeTall[0]
+        /*
+
+        for (let i = 0; i < mangeTall.length; i++) {
+            if(mangeTall[i] > storst){
+                storst = mangeTall[i]
+            }
+        }
+
+        
+        alert(storst)
+       
+        for (let i = 0; i < mangeTall.length; i++) {
+            if(mangeTall[i] < minst){
+                minst = mangeTall[i]
+            }
+        }
+        alert(minst)
+
+        let sum
+        if(storst > minst) {
+            sum = storst - minst;
+
+        }
+
+        else{
+            sum = minst - storst
+        }
+
+        alert(sum)
+
+        let gjennomsnitt = 0;
+        gjennomsnitt = (storst + minst)/2
+        alert(gjennomsnitt)
+        */
+
+        /*Denne funksjonen tar inn en array som parameter, og finner største og minste tall, variasjonsbredden og gjennomsnittet til arrayen som blir puttet inn */
+        /*Funktjonen tar inn en parameter som må være en enkel array. Kan ikke være en todimensjonal array.*/
+        function arrayTing(Array){
+            for (let i = 0; i < Array.length; i++) {   //her blir det største tallet funnet
+                if(Array[i] > storst){
+                    storst = Array[i]
+                    
+                }
+                størsteTall.innerHTML = storst;
+            }           
+            //Finner det minste tallet, er lik som den forrige (motsatt krokdille tegn)
+            for (let i = 0; i < Array.length; i++) {
+                if(Array[i] < minst){
+                    minst = Array[i]
+                    
+                }
+                minsteTall.innerHTML = minst
+            }
+            //her blir variasjonsbredden funnet. Tar inn storste og minste verdiene, og bruker de
+            let sum
+            if(storst > minst) {
+                sum = storst - minst;
+                variasjonsbredde.innerHTML = sum;
+            }
+            else{
+                sum = minst - storst
+                variasjonsbredde.innerHTML = sum;
+            }
+            //her blir gjennomsnittet av arrayen funnet. Tar inn storste og minste verdien, og bruker de.
+            let gjennomsnitt = 0;
+            gjennomsnitt = (storst + minst)/2
+            gjennomsnittP.innerHTML = gjennomsnitt
+
+        }
+
+        console.log()
+    </script>
+
+</body>
+</html>

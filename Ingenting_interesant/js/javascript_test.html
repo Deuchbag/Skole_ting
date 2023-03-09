@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>  
+    <script>
+        var tall1 = Number("0");
+
+        var tall2 = Number("0");
+
+        tall1 = prompt("oppgi en verdi for tall 1");
+
+       var opperator = prompt("operasjon (+,-,* eller /)");
+       
+        tall2 = prompt("oppgi en verdi for tall 2");
+
+        if(opperator == "+") {
+            var resultat = Number(tall1) + Number(tall2)
+
+            document.write(tall1 + " + " + tall2 + " = " + resultat);
+        }
+
+       else if(opperator == "*") {
+             resultat = Number(tall1) * Number(tall2)
+
+             document.write(tall1 + " * " + tall2 + " = " + resultat)
+        }
+
+       else if(opperator == "-") {
+            resultat = Number(tall1) - Number(tall2)
+
+            document.write(tall1 + " - " + tall2 + " = " + resultat)
+        }
+
+       else if(opperator == "/") {
+            resultat = Number(tall1) / Number(tall2)
+
+            document.write(tall1 + " / " + tall2 + " = " + resultat)
+        }
+
+
+ 
+        else {
+            document.write('dumbass')
+        }
+
+
+// Skriver resultatet til nettsiden
+
+    </script>
+</body>
+
+</html>

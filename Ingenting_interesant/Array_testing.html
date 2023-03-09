@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array testing</title>
+</head>
+<body>
+    <button onclick="answer()"> svar</button>
+    <p id="svar"></p>
+    <script>
+        let ukeDager = ["Mandag","Tirsdag","Onsdag","Torsdag","Fredag","Lørdag","Søndag"]; 
+
+        function uke(){
+            ukeDager[0] = "Blåmandag"
+            ukeDager.unshift("Ekstrablåmandag")
+            ukeDager.shift()
+            ukeDager.push("Søndag2")
+            let enUkeDag = ukeDager.indexOf("Onsdag")
+            ukeDager.splice(enUkeDag, 1)
+            ukeDager.pop();
+            return ukeDager;
+        }
+        function answer(){
+        svar.innerHTML = uke();
+        }
+    </script>
+</body>
+</html>

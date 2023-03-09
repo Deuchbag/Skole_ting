@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 id="sporsmaal"> Her er spårmålene</h1>
+    <input id="impSvar" type="text">
+    <button id="btnOK">Klikk når du er klar</button>
+    <button id="btnForrige">Forrige</button>
+    <button id="btnNeste">Neste</button> <br>
+    <p id="alt1"></p><br>
+    <p id="alt2"></p><br>
+    <p id="alt3"></p><br>
+    <img id="imgBilde" src="../../bilder/galdhøpiggen.jpg" alt="">
+</body>
+<script>
+    var sporsmaal = document.getElementById("sporsmaal")
+    var impSvar = document.getElementById("impSvar")
+    var btnOK = document.getElementById("btnOK")
+    var btnForrige = document.getElementById("btnForrige")
+    var btnNeste = document.getElementById("btnNeste")
+    var imgBilde = document.getElementById("imgBilde")
+    var spmNr = 0;
+
+
+    var spmOgSvar = [
+        { q: "Hva heter Norges høyeste fjell", a1: "A: Galdhøpiggen",a2: "B: Mount Everest",a3: "C: Svartfjell",riktig:"a", bilde:"../../bilder/galdhøpiggen.jpg" },
+        { q: "hvordan utaler man Markento",a1: "A: Emphesis på t", a2: "B: Emphesis på a",a3: "C: Emphesis på e",riktig:"b", bilde:"../../bilder/emphasis.png" },
+        { q: "Hva er fornavnet til statsministeren i Norge",a1:"A: Joe",a2: "B: Donald", a3: "C: Jonas",riktig: "c" , bilde:"../../bilder/Jonas.jpg" }
+    ]
+
+    sporsmaal.innerHTML = spmOgSvar[0].q;
+    alt1.innerHTML = spmOgSvar[0].a1
+    alt2.innerHTML = spmOgSvar[0].a2
+    alt3.innerHTML = spmOgSvar[0].a3
+
+    function sjekkSvar() {
+
+        if (impSvar.value.toLowerCase() == spmOgSvar[spmNr].riktig.toLowerCase()) {
+            alert("Supert")
+        }
+        else {
+            alert("Du tokk feil")
+        }
+    }
+
+    btnOK.addEventListener("click", sjekkSvar)
+
+    function nesteSPM() {
+        if (spmNr < spmOgSvar.length -1) {
+            spmNr++;
+            btnForrige.disabled = false;
+            alt1.innerHTML = spmOgSvar[spmNr].a1
+            alt2.innerHTML = spmOgSvar[spmNr].a2
+            alt3.innerHTML = spmOgSvar[spmNr].a3
+            sporsmaal.innerHTML = spmOgSvar[spmNr].q;
+            imgBilde.src = spmOgSvar[spmNr].bilde
+            impSvar.innerHTML =''
+        }
+        if(spmNr == spmOgSvar.length - 1){
+            btnNeste.disabled = true
+        }
+    }
+    btnNeste.addEventListener("click", nesteSPM)
+
+    function forrigeSPM() {
+        btnNeste.disabled = false;
+        if (spmNr > 0) {
+            spmNr--
+            alt1.innerHTML = spmOgSvar[spmNr].a1
+            alt2.innerHTML = spmOgSvar[spmNr].a2
+            alt3.innerHTML = spmOgSvar[spmNr].a3
+            sporsmaal.innerHTML = spmOgSvar[spmNr].q;
+            imgBilde.src = spmOgSvar[spmNr].bilde
+            impSvar.innerHTML = " "
+        }
+        if (spmNr == 0) {
+            btnForrige.disabled = true;
+        }
+    }
+    btnForrige.addEventListener("click", forrigeSPM)
+
+</script>
+
+</html>

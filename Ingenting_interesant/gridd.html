@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid ting</title>
+
+    <style>
+        body {
+            background-color: aliceblue;
+        }
+
+        div {
+            padding: 10px;
+            background-color: blue;
+            
+        }
+
+        section {
+            display: grid;
+            grid-gap:5px;
+            grid-template-columns: repeat(8,4.1fr);
+            justify-content: space-between;
+        }
+
+        .span-2 {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .span-3 {
+            grid-row: span 3;
+        }
+
+        .usynlig {
+            opacity: 1;
+        }
+
+    </style>
+</head>
+
+<body>
+    <section>
+        <div class="span-3">1</div>
+        <div>2</div>
+        <div class="span-2 usynlig">3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+        <div>10</div>
+        <div>11</div>
+        <div>12</div>
+        <div>13</div>
+        <div>14</div>
+        <div>15</div>
+        <div>16</div>
+
+    </section>
+</body>
+
+</html>
