@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="input1" type="text" placeholder="grunntall"><br>
+    <input id="input2" type="text" placeholder="potens"><br>
+    <button onclick="kvadrat()">submit</button>
+
+    <p id="type"></p>
+
+    <script>
+       var a = 0;
+
+       function kvadrat() {
+         a = Number(document.getElementById("input1").value)
+         type.innerHTML = a*a
+       }
+
+        
+    </script>
+
+</body>
+</html>

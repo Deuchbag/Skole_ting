@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="input1" type="text">
+    <input id="input2" type="text">
+    <input id="input3" type="text">
+    <input id="input4" type="text">
+    <button onclick="printUt()">
+        Press me:)
+    </button>
+
+    <p id="svar"></p>
+
+    <script>
+        /* funksjon erLik vil sjekke om to av paramterne er like, og summere de sammen.         */
+        /* Hvis ingen av de er like, vil funksjonen printe false                                */
+        /*koden under sjekker om noen av parameterne er like hverandre                          */
+        /* funksjonen tar inn 4 parametere                                                      */
+        function erLik(a,b,c,d){
+            var sum
+            if(a == b ||a == c || a == d){
+                 sum = a*2
+                return sum;
+            }
+            else if(b == c || b ==d){
+                sum = b*2;
+                return sum;
+            }
+            else if(c == d){
+                sum = c**2;
+                return sum;
+            }
+            else{
+                sum = false;
+                return sum;
+            }
+        }
+
+        /* funksjonen printUt vil legge til verdier fra inputene og gi de til variablene a,b,c og d.              */
+        /* a.b.c og d vil da bli puttet inn som parametere i funksjonen erLik                                     */
+        /* Variablen lik tar inn verdien som kommer ut av funksjonen erLik og vil bli brukt til å legge inn svaret*/
+        /* svaret vil bli lagt til i det tomme avsnittet med id navn "svar".                                      */
+        function printUt(){
+           var a = document.getElementById("input1").value;
+           var b = document.getElementById("input2").value;
+           var c = document.getElementById("input3").value;
+           var d = document.getElementById("input4").value;
+            var lik = erLik(a,b,c,d);
+            svar.innerHTML = lik;
+        }
+
+        
+
+        
+    </script>
+
+</body>
+</html>
