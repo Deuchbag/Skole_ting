@@ -18,38 +18,83 @@
    
 </head>
 <body>
+    <h2 id="hoved">velkommen til helvete. Når du trykker på skjermen så vil en sirkel komme opp. Dra over sirkelen med musa for å få poeng. Får du hundre poeng kan du lage ne ny sirkel, og få mer poeng.</h2>
+    <h2 id="poengGanger">Poeng * 2 koster 1000</h2>
     <input id="farge" type="color">
-    <audio id="lyd" src="../../../bilder/soviet-anthem1944.mp3"></audio>
+    <audio id="lyd" src="../../../bilder/soviet-anthem1944.mp3"></audio> <!--Lyden fungerer ikke enda, siden den var en del av et annet program-->
+    <h1 id="poeng">poeng</h1>
+    <button id="btnGanging" onclick="gangeMedTo()">Betal 1000 for å gange med 2</button> <!--Jeg beklager så meget for å blande css og javascript-->
      <script>
-        var lyd = document.getElementById("lyd")
-    
-        var ny = true
+        var lyd = document.getElementById("lyd"); //lyden var en del av et 
+        // annet program, men har ikke en del i dette enda ;)
+        var poengNummer = 100;
+        var poengGange = 1;
+        var ny = true;
+        //funksjonen fjern gjør ingen ting for øyeblikket, men deltok i et 
+        //annet program før denne.
         var fjern = function fjern(evt){
             if(!ny){
-            evt.stopPropagation()
-           var minAnim = evt.target.animate([{transform:"scale(1)"},{transform:"scale(20)"}],5000)
-            lyd.play()
+            evt.stopPropagation();
+            poengNummer = poengNummer + 1 * poengGange; 
+            poeng.innerHTML = "poeng: " + poengNummer;
+          // var minAnim = evt.target.animate([{transform:"scale(1)"},{transform:"scale(2)"}],500)
+            lyd.play();
             minAnim.onfinish = function(minAnim){
-                lyd.pause()
-                document.body.removeChild(evt.target)
+                lyd.pause();
+                document.body.removeChild(evt.target);
             }
         }
-        ny = false
+        ny = false;
         }
-
-        var farge = document.getElementById("farge")
+        //FUbksjonen poengTing gjør ingen ting, men var et eksperiment
+        function poengTing(){
+            if(ny = true){
+                poengNummer--;
+                poeng.innerHTML = "poeng:" + poengNummer;
+            }
+        }
+        var farge = document.getElementById("farge");
+        //lager en sirkel når man kliiker på skjermen og gjør at man får poeng
+        //når man går over en sirkel
+        //if-en inni bestemmer at du må ha 100 poeng for at du kan legge til 
+        //en sirkel. Uten 100 poeng vil ikke dette skje
         window.onclick = function(evt) {
-            ny = true
+            if(poengNummer >=100){
+            ny = true;
             var mittElement = document.createElement("div");
             mittElement.style.top = evt.clientY - 25 + "px";
             mittElement.style.left = evt.clientX - 25 + "px";
-            mittElement.style.backgroundColor = farge.value
-            mittElement.onmouseenter = fjern
+            mittElement.style.backgroundColor = farge.value;
+            mittElement.onmouseenter = fjern;
             document.body.appendChild(mittElement);
+            poengNummer = poengNummer - 100;
+            poeng.innerHTML = "poeng:" + poengNummer;
+            hoved.hidden = true;
+            poengGanger.hidden = true;
+
+            }
+            
         }
 
         farge.onclick = function(evt){
-            evt.stopPropagation()
+            evt.stopPropagation();
+        }
+
+        //øker hvor mye poeng du får for hver gang du går over en sirkel
+        //det treng 1000 poeng for at denne funksjonen skal aktiveres
+        //Funksjonen er kobblet til en button med id = "btnGanging"
+        function gangeMedTo(){
+            ny = false
+            if(ny = false){
+            if(poengNummer >= 1000){
+                poengGange++;
+                poengNummer -= 1000;
+                poeng.innerHTML = "poeng: " + poengNummer;
+                
+            }
+            
+        }
+        ny = true;
         }
     </script>
 
