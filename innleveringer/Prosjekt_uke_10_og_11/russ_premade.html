@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="russ.css">
+    <script src="russP_data.js"></script>
+</head>
+
+<body>
+    <div id="hoved">
+        <h1> Russekort</h1>
+
+        <label for="Navn">Navn</label>
+        <input type="text" id="Navn" placeholder="Sofus">
+
+        <label for="etternavn">Etternavn</label>
+        <input type="text" id="etternavn" placeholder="Markento">
+
+        <label for="telefonNummer">Telefonnummer</label>
+        <input type="number" id="telefonNummer">
+
+        <label for="jobb">Jobb</label>
+        <input  type="text" id="jobb">
+
+        <div id="ramme">
+            <label for="beskrivelse">Velg ramme</label>
+            <label class="grid" for="dashed">Dashed</label>
+            <input onclick="dashFunk()" id="dashed" type="radio" name="ramme" value="Dashed">
+            <label for="sloid">Solid</label>
+            <input onclick="solidFunk()" id="solid" type="radio" name="ramme" value="Solid">
+            <label for="double">Double</label>
+            <input onclick="doubleFunk()" id="double" type="radio" name="ramme" value="Double">
+        </div>
+        <label for="alder">Fødselsdato</label>
+        <input type="date" id="alder" placeholder="1997">
+
+        <label for="kjeun">kjønn</label>
+        <select id="kjeun">
+            <option value="blank">Velg kjønn</option>
+            <option value="Mann">Mann</option>
+            <option value="Dame">Dame</option>
+            <option value="annet">Annet</option>
+        </select>
+
+        <label for="ideologi">Ideologisk stand</label>
+        <select id="ideologi">
+            <option value="velg">Velg ideologi</option>
+            <option value="kommunist">Kommunismen</option>
+            <option value="nazist">Nazismen</option>
+            <option value="sosialisme">Sosialismen</option>
+            <option value="kapitalisme">Kapitalismen</option>
+            <option value="anarkisme">Anarkismen</option>
+            <option value="kristendommen">Kristendommen</option>
+            <option value="ingen">Ingen tilhørelse</option>
+        </select>
+
+        <div>
+            <label for="faurerkort">Førerkort</label><br>
+
+            <label for="ja"></label>ja
+            <input id="ja" type="checkbox">
+        </div>
+
+        <label for="file">Legg til profilbilde</label>
+        <input id="file" type="file">
+
+       
+
+        <button onclick="registrer()">Registrer</button><br><br>
+
+        <label for="premade">Premade kort</label>
+        <select id="premade">
+            <option>ikke valgt</option>
+        </select>
+        <button id="premadeBTN">Bekreft premade</button>
+    </div>
+    <button id="tilbakeTilSkjema" onclick="tilbake()">Tilbake til skjema</button>
+    <div id="kort">
+        <div id="DImg" id="DImgheader" class="divKort">
+        <img id="img"  src="" alt="Selvvalgt bilde">
+        </div> <br>
+        <div id="Dnavn" id="Dnavnheader" class="divKort">
+        <p id="navnP">Navn</p>
+        </div><br><br>
+        <div id="Djobb" id="Djobbheader" class="divKort">
+            <p id="jobbP">Jobb</p>
+        </div><br><br>
+        <div id="DEnavn" id="DEnavnheader" class="divKort" >
+        <p id="etternavnP">Etternavn</p>
+        </div><br><br>
+        <div id="Dtlf" id="Dtlfheader" class="divKort">
+        <input id="telefon" type="number">
+        </div><br><br>
+        <div id="Dfodselsaar" id="Dfodselsaarheader" class="divKort">
+        <p id="datoI"></p>
+        </div><br><br>
+        <div id="Dkjaun" id="Dkjaunheader" class="divKort">
+        <p id="kjeunP">Kjønn</p>
+        </div><br><br>
+        <div id="DIdeologi" id="DIdeologiheader" class="divKort">
+        <p id="ideologiP">Ideologi</p>
+        </div><br><br>
+        <div id="Dfeurerkort" id="Dfeurerkortheader" class="divKort">
+        <p id="feurerkortP">Førerkort</p>
+        </div><br><br>
+        <div id="Dsitat" id="Dsitatheader" class="divKort">
+            <p id="sitatP"></p>
+        </div>
+    </div>
+
+    <script>
+        Dsitat.hidden = true
+        var premade = document.getElementById("premade")
+        var datoI = document.getElementById("datoI")
+        for (const element in informasjon.Ideologisk_stand) {
+            premade.innerHTML += "<option >" + informasjon.Ideologisk_stand[element].Navn + "</option>"
+        }
+        
+        premadeBTN.onclick = function premadeFunksjon() {
+            tilbakeTilSkjema.hidden = false
+            hoved.hidden = true
+            Dsitat.hidden = false
+            img.src = informasjon.Ideologisk_stand[premade.selectedIndex-1].bilde
+            navnP.innerHTML = informasjon.Ideologisk_stand[premade.selectedIndex-1].Navn
+            jobbP.innerHTML = informasjon.Ideologisk_stand[premade.selectedIndex-1].Jobb
+            telefon.value = informasjon.Ideologisk_stand[premade.selectedIndex-1].Tlf
+            datoI.innerHTML = informasjon.Ideologisk_stand[premade.selectedIndex-1].faudsel
+            kjeunP.innerHTML = informasjon.Ideologisk_stand[premade.selectedIndex-1].kjaun
+            etternavnP.innerHTML =  informasjon.Ideologisk_stand[premade.selectedIndex-1].etternavn;
+            ideologiP.innerHTML =  informasjon.Ideologisk_stand[premade.selectedIndex-1].stand
+            sitatP.innerHTML = informasjon.Ideologisk_stand[premade.selectedIndex-1].Sitat
+            while(n < divKort.length-1){
+                n++;
+                divKort[n].style.border = "none";
+            }
+            
+        }
+
+        tilbakeTilSkjema.hidden = true;
+        /*Variablene under brukes til i funksjonen 'rammeendring'           */
+        /*Gjør at man kan velge og se hvilken ramme man skal bruke på kortet*/
+        /*Alle variablene starter med en 'false' verdi                      */ 
+        var ramme = document.getElementById("ramme")
+        var dashed = document.getElementById("dashed").value
+        var solid = document.getElementById("solid").value
+        var double = document.getElementById("double").value
+        dashed = false
+        solid = false
+        double = false
+        
+        /*variablene under ble brukt til et eksperiment*/
+        /*Er ikke kobblet til noe akkurat nå               */
+        var navn = document.getElementById("Navn")
+        var etternavn = document.getElementById("etternavn")
+        var telefonNummer = document.getElementById("telefonNummer")
+        var fødselsdato = document.getElementById("alder")
+        var kjønn = document.getElementById("kjeun")
+        var ideologi = document.getElementById("ideologi")
+        var førerkort = document.getElementById("ja")
+         
+        /*Funksjonen registrer spiller av alle funksjonene i programmet*/
+        /*Den putter inn informasjonen fra skjemaet                    */
+        /*Funksjonen fjærner bordere fra elementene inn i kortet       */
+        var n = -1;
+        var divKort = document.getElementsByClassName("divKort")
+        var hoved = document.getElementById("hoved")
+
+        var inpFile = document.getElementById("file")
+
+        function registrer(){
+            tilbakeTilSkjema.hidden = false;
+             hoved.hidden = true;
+            var bildeEl = URL.createObjectURL(inpFile.files[0]);
+            ideolog();
+            feurerkort();
+            rammeEndring();
+            jobbP.innerHTML = jobb.value;
+            navnP.innerHTML = Navn.value;
+            etternavnP.innerHTML = etternavn.value;
+            telefon.value = telefonNummer.value;
+            datoI.innerHTML = alder.value;
+            kjeunP.innerHTML = kjeun.value;
+            document.getElementById("img").src = bildeEl;
+            while(n < divKort.length-1){
+                n++;
+                divKort[n].style.border = "none";
+            }
+        }
+
+        /*Bringer skjemaet tilbake, hvis man vil gjøre endringer*/
+        function tilbake(){
+            hoved.hidden = false;
+            tilbakeTilSkjema.hidden = true;
+            while(n < divKort.length-1){
+                n++;
+                divKort[n].style.border = "solid";
+            }
+        }
+  
+        /*Funksjonen feurerkort, sjekker om brukeren har presset ja på checkbox  */
+        /*Den vil printe ut tekst basert på svaret, og putte informasjon i kortet*/
+        function feurerkort(){
+            let verdi = document.getElementById("ja").checked;
+            if(verdi == true){
+                feurerkortP.innerHTML = "Har gyldig førerkort (så langt;) )";
+            }
+
+            else{
+                feurerkortP.innerHTML = 'Har ikke "gyldig" førerkort';
+            }
+        }
+        // funksjonen endrer bakrunnsfargen /ideologi
+        // Bruker if setninger for å sjekke hvilken av de som er 'aktivert'
+    function ideolog(){
+      if ( ideologi.value == "kommunist" ) {
+        kort.style.backgroundColor = "#CC0000";
+        ideologiP.innerHTML ="dette er vårt visittkort";
+      }
+      else if (ideologi.value == "nazist" ){
+        kort.style.backgroundColor ="#53504e";
+        ideologiP.innerHTML = "fargen er ironisk";
+      }
+      else if ( ideologi.value == "kapitalisme"){
+        kort.style.backgroundColor = "#002147";
+        ideologiP.innerHTML = "vipps meg 5kr, kortet er ikke gratis";
+        ideologiP.style.color = "white";
+        navnP.style.color = "white";
+        jobbP.style.color = "white";
+        etternavnP.style.color = "white";
+        kjeunP.style.color = "white";
+        feurerkortP.style.color = "white";
+      }
+      else if(ideologi.value == "sosialisme"){
+        kort.style.backgroundColor = "#BA0C2F";
+        ideologiP.innerHTML = "alt for norge";
+      }
+      else if(ideologi.value == "anarkisme"){
+        kort.style.backgroundColor = "#080908";
+        ideologiP.innerHTML = "ikke for fred";
+        ideologiP.style.color = "white";
+        navnP.style.color = "white";
+        jobbP.style.color = "white";
+        etternavnP.style.color = "white";
+        kjeunP.style.color = "white";
+        feurerkortP.style.color = "white";
+      }
+      else if(ideologi.value == "kristendommen"){
+        kort.style.backgroundColor = "#FFFFFF";
+        ideologiP.innerHTML = "kirkeklokker";
+      }
+      else{ alert("du må velge ideologi");
+    }
+    }
+
+    /*Funksjonene ned til og med rammeEndring endrer på rammen*/
+    /*Funksjonen sjekker hvilken radio knapp som er aktivert */
+    /*Radiokanppen blir endret basert på hvilken knapp som blir presset*/
+    /*Deretter blir hoved funksjonen 'rammeEndring' aktivert*/
+        function dashFunk(){
+            solid = false;
+            double = false;
+            dashed = true;
+            rammeEndring();
+        }
+
+        function solidFunk(){
+            dashed = false;
+            double = false;
+            solid = true;
+            rammeEndring();
+        }
+
+        function doubleFunk(){
+            dashed = false;
+            solid = false;
+            double = true;
+            rammeEndring();
+        }
+
+        function rammeEndring(){
+            if(dashed == true){
+                ramme.style.border = "dashed";
+            }
+
+           else if(solid == true){
+                
+                ramme.style.border = "solid";
+            }
+            else if(double == true){
+                
+                ramme.style.border = "double";
+            }
+            else{
+                ramme.style.border = "none";
+            }
+            kort.style.border = ramme.style.border;
+        }
+
+    /*Variablene og funksjonen 'draModus' blir brukt til å bevege elemntene i kortet*/
+    /*Den bruker div-er rundt hvert element og beveger på de*/
+    /*Funksjonen vil deretter følge posisjonen til musen til brukeren*/
+draModus(document.getElementById("Djobb"));
+draModus(document.getElementById("DEnavn"));
+draModus(document.getElementById("DImg"));
+draModus(document.getElementById("Dtlf"));
+draModus(document.getElementById("DIdeologi"));
+draModus(document.getElementById("Dnavn"));
+draModus(document.getElementById("Dfodselsaar"));
+draModus(document.getElementById("Dkjaun"))
+draModus(document.getElementById("Dfeurerkort"))
+draModus(document.getElementById("Dsitat"))
+
+
+function draModus(elementet) {
+
+    let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+    if (document.getElementById(elementet.id + "header")) {
+        document.getElementById(elementet.id + "header").onmousedown = startDraModus;
+    } else {
+        elementet.onmousedown = startDraModus;
+    }
+
+
+    function startDraModus(event) {
+        event.preventDefault();
+        pos3 = event.clientX;
+        pos4 = event.clientY;
+        document.onmouseup = draModusAv;
+        document.onmousemove = draElementet;
+    }
+
+
+
+    function draElementet(event) {
+        event.preventDefault();
+        pos1 = pos3 - event.clientX;
+        pos2 = pos4 - event.clientY;
+        pos3 = event.clientX;
+        pos4 = event.clientY;
+        elementet.style.top = (elementet.offsetTop - pos2) + "px";
+        elementet.style.left = (elementet.offsetLeft - pos1) + "px";
+    }
+
+
+    function draModusAv() {
+        document.onmouseup = null;
+        document.onmousemove = null;
+    }
+}
+    </script>
+</body>
+
+</html>

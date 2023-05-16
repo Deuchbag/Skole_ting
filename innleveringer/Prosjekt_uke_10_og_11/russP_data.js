@@ -1,0 +1,6 @@
+let informasjon = {"Ideologisk_stand":[
+    {"stand": "Nazist", "Navn": "Lord Zetranix", "etternavn":"Von Stayn der I", "Jobb": "Massemorder", "Tlf": "01091939", "kjaun": "Ariske folkeslag", "faudsel": "01-02-1880", "Sitat": "Porn isn't the answer", "bilde": "../../bilder/tysker.avif", "faurerkort": "Fuck the french"},
+    {"stand": "Kommunist", "Navn": "Karl Max", "etternavn": "Marksismen", "Jobb": "politisk optimist" , "Tlf": "26121991", "kjaun": "Arbeider", "faudsel": "05-05-1818", "Sitat": '"Is it a misfortune that magnificent California was seized from the lazy Mexicans who did not know what to do with it?”', "bilde": "../../bilder/standard_compressed_Karl_Marx.jpg", "faurerkort": "The vodka taste nice while driving"},
+    {"stand": "Kapitalist", "Navn":"Boe jiden", "etternavn": "Dollar", "jobb": "Husker ikke", "Tlf": "01202021", "kjaun": "Mann", "faudsel": "20-11-1942", "Sitat":'"Poor kids are just as bright and just as talented as white kids"', "bilde":"../../bilder/Kapitalismen2.webp", "faurerkort": "Lets go drunk driving"},
+    {"stand": "Anarkist", "Navn": "Max Stirner", "etternavn": "Kaos", "Jobb": "Kaotiker", "Tlf": "13811530", "kjaun": "Mann", "faudsel": "01-01-1400", "Sitat": "Why don't ypu say something nice instead of being a smartass all the time?", "bilde": "../../bilder/Anarkisme.png", "faurerkort": "Hva er et førerkort"}
+]}
