@@ -28,7 +28,7 @@
     <button id="btnOK">Klikk når du er klar</button>
     <button id="btnForrige">Forrige</button>
     <button id="btnNeste">Neste</button>
-    <button id="btnAdmin" hidden = true>Bli admin</button> <br>
+    <button id="btnAdmin" hidden=true>Bli admin</button> <br>
 
     <button onclick="alter1()" id="alt1"></button><br>
     <button onclick="alter2()" id="alt2"></button><br>
@@ -36,6 +36,7 @@
     <img id="imgBilde" src="../../bilder/galdhøpiggen.jpg" alt="">
 </body>
 <script>
+    alert('Trykk på "b" for å bli admin')
     var sporsmaal = document.getElementById("sporsmaal")
     var inpSvar = document.getElementById("inpSvar")
     var btnOK = document.getElementById("btnOK")
@@ -60,6 +61,8 @@
     alt2.innerHTML = spmOgSvar[0].a2
     alt3.innerHTML = spmOgSvar[0].a3
 
+    //Funksjonen sjekkSvar vil putte inn spørsmålet og putte et av alternativene som riktig svar
+    //Den vil også sjekke om et skrevet svar er riktig eller ikke, hvis ikke vil en alert komme opp som sier at svareren tar feil
     function sjekkSvar() {
 
         if (inpSvar.value.toLowerCase() == spmOgSvar[spmNr].riktig.toLowerCase()) {
@@ -113,8 +116,9 @@
 
 
 
-
+    //Funksjonen nesteSPM vil gå til neste spørsmål
     function nesteSPM() {
+        lyd.pause()
         if (spmNr < spmOgSvar.length - 1) {
             spmNr++;
             btnForrige.disabled = false;
@@ -128,9 +132,10 @@
         }
     }
     btnNeste.addEventListener("click", nesteSPM)
-
+    //Funksjonen forrigeSPM vil gå tilbake til forrige spørsmål
     function forrigeSPM() {
         btnNeste.disabled = false;
+        lyd.pause()
         if (spmNr > 0) {
             spmNr--
             oppsett()
@@ -142,7 +147,7 @@
         }
     }
     btnForrige.addEventListener("click", forrigeSPM)
-
+    //Vil putte inn svarene inn i knappe alternativene
     function oppsett() {
         alt1.innerHTML = spmOgSvar[spmNr].a1
         alt1.disabled = false
@@ -153,7 +158,7 @@
         stalin.style.opacity = 0;
         inpSvar.value = ""
     }
-
+    //FadeIn funksjonen vil fade inn et bilde av stalin, etter et spørsmål har blitt svart korrekt
     function fadeIn(el) {
         el.style.opacity = 0;
         var tick = function () {
@@ -170,7 +175,7 @@
         console.log(el);
         fadeIn(el);
     }
-
+    //funksjonen afminFunksjoner vil gjøre deg til admin etter admin knappen har blitt presset
     function adminFunksjoner() {
         btnAdmin.innerHTML = "Tilbake til vanlig svarmodus";
         btnAdmin.removeEventListener("click", adminFunksjoner);
@@ -190,12 +195,13 @@
         btnOK.addEventListener("click", leggInnNyttSpm);
         btnOK.innerHTML = "Legg inn spørsmålet";
     }
-
+    //normalfunksjonenn gjør at du kommer tilbake til hovedsiden etter et nytt spørsmål har blitt lagdt til
+    //den vil teknisk sett bringe tilbake allt som ble fjernet fra adminfunksjonen
     function normalFunksjoner() {
         alert("her må jeg skrive alt som skal til for å sette tilbake til vanlig modus")
         alert("forresten, Nå er det " + spmOgSvar.length + " spørmål i arrayen")
         btnAdmin.innerHTML = "Bli admin"
-        btnAdmin.removeEventListener("click",normalFunksjoner)
+        btnAdmin.removeEventListener("click", normalFunksjoner)
         btnAdmin.addEventListener("click", adminFunksjoner)
         inpNyttSpmSvar.hidden = true
         btnOK.innerHTML = "Klikk når du er klar"
@@ -215,12 +221,15 @@
         spmOgSvar.push(nyttSpm);
     }
     btnAdmin.addEventListener("click", adminFunksjoner);
-
+    //funksjonen knappetrykk vil sjekke etter knappen 'b' som vil gjøre deg til admin
     function knappeTrykk(evt) {
         var tallKode = evt.keyCode
-        alert("Du trykket " + tallKode)
+        if(tallKode == 66){
+            btnAdmin.hidden = false;
+        }
     }
     document.addEventListener("keydown", knappeTrykk)
+
 </script>
 
 </html
